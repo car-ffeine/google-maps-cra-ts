@@ -4,9 +4,10 @@ interface GoogleMapProps {
   apiKey: string;
   location: { lat: number; lng: number };
   style?: React.CSSProperties;
+  zoom: number;
 }
 
-function GoogleMap({ apiKey, location, style }: GoogleMapProps) {
+function GoogleMap({ apiKey, location, style, zoom }: GoogleMapProps) {
 
   const mapElement = useRef(null);
 
@@ -24,7 +25,7 @@ function GoogleMap({ apiKey, location, style }: GoogleMapProps) {
     if (!mapElement.current || !google) return;
 
     const map = new google.maps.Map(mapElement.current, {
-      zoom: 17,
+      zoom: zoom,
       center: location,
     });
     new google.maps.Marker({

@@ -5,12 +5,14 @@ function App() {
   const mapStyle = {
     minHeight: '100vh',
   };
+  const zoom = 17;
 
   return (
     <GoogleMap
       apiKey={`${process.env.REACT_APP_API_KEY}`}
       location={location}
       style={mapStyle}
+      zoom={zoom}
     />
   );
 }
