@@ -3,9 +3,11 @@ import { useCallback, useEffect, useRef } from 'react';
 interface GoogleMapProps {
   apiKey: string;
   location: { lat: number; lng: number };
+  style?: React.CSSProperties;
 }
 
-function GoogleMap({ apiKey, location }: GoogleMapProps) {
+function GoogleMap({ apiKey, location, style }: GoogleMapProps) {
+
   const mapElement = useRef(null);
 
   const loadScript = useCallback((url: string) => {
@@ -49,7 +51,7 @@ function GoogleMap({ apiKey, location }: GoogleMapProps) {
     <div
       ref={mapElement}
       style={{
-        minHeight: '100vh',
+        ...style
       }}
     />
   );
